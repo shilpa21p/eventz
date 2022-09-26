@@ -5,13 +5,14 @@ import { NavLink } from 'react-router-dom'
 function UserDashboard() {
   const context = useContext(GlobalContext)
   const [curEvents, setCurEvents] = useState([])
-  const [event, setEvent] = context.eventApi.events 
+  const [event] = context.eventApi.events 
 
   useEffect(() =>{
     //filtered active events
     const activeEvents = event.filter((item) => item.isEnabled === true)
     setCurEvents(activeEvents)
   },[curEvents])
+
   return (
     <div className="container">
       <div className="col-md-12">
