@@ -9,7 +9,7 @@ function UpdateEvent() {
     name: "",
     description:"",
     eventDate:"",
-    isEnable:false
+    isEnabled:false
   })
   const[status, setStatus] = useState(false)
   const navigate = useNavigate()
@@ -24,7 +24,7 @@ function UpdateEvent() {
       await axios.get(`/api/v1/event/getEvents/${params.id}`)
       .then(res => {
         setEvent(res.data.event)
-       
+       setStatus(res.data.event.isEnabled)
         //event.eventDate= new Date(res.data.event.eventDate).toISOString().slice(0,14)
         
       }).catch(err => console.error(err.message))
